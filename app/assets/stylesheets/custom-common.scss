@@ -1,0 +1,113 @@
+.custom-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #e6e6e6;
+   
+    min-width: 350px;
+    padding: 1rem;
+}
+
+.custom-card__body form{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.card__label{
+    font-weight: 500;
+}
+
+.card__info{
+    font-size: 0.65rem;
+}
+
+.card__field input{
+    width: 100%;
+}
+
+.card__field input:hover { 
+    box-shadow: 0 0 0 3px #c8f3fa,0 2px 2px rgba(15,17,17,.15) inset;
+}
+
+.custom-card__body__actions input {
+    background-color: #FCD200;
+    border: 1px solid #e6c000;
+    width: 100%;
+    border-radius: 0.5rem;
+}
+
+.custom-card__body__actions button{
+    background-color: #FCD200;
+    border: 1px solid #e6c000;
+    width: 100%;
+    border-radius: 0.5rem;
+}
+
+
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+}
+
+
+body main{
+    flex: 1;
+    padding: 2rem;
+}
+
+
+.custom-card-main{
+    margin-top: 2rem;
+}
+
+.custom-card-main__index{
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.custom-card-main__title a{
+    font-size: 2rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: black;
+}
+
+.custom-card-main__stats{
+    display: flex;
+    gap: 1rem;
+    color: rgb(161, 161, 161);
+}
+
+.custom-main-cards-container{
+ 
+    margin-top: 5rem;
+    border-top: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;;
+
+}
+
+.custom-card-main__title--small a{
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: black;
+  
+}
+
+
+// DEVISE
+.custom-devise-links{
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
