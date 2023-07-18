@@ -32,21 +32,45 @@
 
 
 
+
+
+
 <div>
 
-<%= form_with %>
+<%= form_with model: @booking do |form| %>
+  <%= hidden_field :booking, :passenger, :value => @flight.passengers %>
 
+  <% @list_of_flights.each do |flight|%>
+
+    <div class= "custom-card-main d-flex">
+
+      <div>
+          <div class="custom-card-main__title">
+            Flight from: <%= flight.departure.code%> to:  <%= flight.arrival.code%>
+          </div>
+
+          <div class="custom-card-main__stats">
+            <div class= "custom-card-main__stats__item">
+              Duration: <%= flight.date%>
+            </div>
+            <div class= "custom-card-main__stats__item">
+              Duration: <%= flight.duration%>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div>   <%= form.radio_button :flight_id, flight.id %>  </div>
+
+    </div>
+
+  <% end %>
+
+  <%= form.submit %>
 
 <% end %>
 
-
-
-
-
-
-
-
-<%= render partial: "flight-card",locals: {list_of_flights: @list_of_flights}%>
 
 
 </div>
