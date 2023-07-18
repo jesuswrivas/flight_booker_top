@@ -1,0 +1,52 @@
+<h1>Flights index</h1>
+
+<div>
+    <%= form_with model: @flight, url: "/flights", method: :get do |form| %>
+    
+        <div>
+          <%= form.label :departure_id, "Departure" %>
+          <%= form.grouped_collection_select :departure_id, Country.order(:name), :airports, :name, :id, :code, prompt: "Select an airport" %>
+        </div>
+    
+        <div>
+          <%= form.label :arrival_id, "Arrival" %>
+          <%= form.grouped_collection_select :arrival_id, Country.order(:name), :airports, :name, :id, :code, prompt: "Select an airport" %>
+        </div>
+    
+        <div>
+          <%= form.label :date, "Date" %>
+          <%= form.date_field :date %>
+        </div>
+          
+        <div>
+          <label>Passengers</label>
+          <%= form.number_field :passengers %>
+        </div>
+    
+        <div>
+            <%= form.submit "Search" %>
+        </div>
+    <% end %>
+    
+</div>
+
+
+
+<div>
+
+<%= form_with %>
+
+
+<% end %>
+
+
+
+
+
+
+
+
+<%= render partial: "flight-card",locals: {list_of_flights: @list_of_flights}%>
+
+
+</div>
