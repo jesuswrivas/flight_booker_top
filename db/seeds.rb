@@ -117,7 +117,7 @@ airports.each do |airport_data|
       next if departure == arrival # Skip if departure and arrival airports are the same
   
       number_of_dates.times do
-        random_date = Date.today + rand(30)
+        random_date = Date.today + rand(180)
         start_datetime = DateTime.new(random_date.year, random_date.month, random_date.day, rand(0..23), rand(0..59))
         duration = rand(3..8)
   
