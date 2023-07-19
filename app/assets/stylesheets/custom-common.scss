@@ -1,17 +1,46 @@
 .custom-card{
+    
+    border: 1px solid #e6e6e6;
+    width: 90%;
+    padding: 1rem;
+    border-radius: 0.25rem;
+}
+
+
+.custom-card__body{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid #e6e6e6;
-   
-    min-width: 350px;
-    padding: 1rem;
+    gap: 1rem;
+    min-width: 80%;
 }
 
-.custom-card__body form{
+
+.custom-card__body__top{
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-card__body__bottom{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+// *{
+//     outline: 1px solid red;
+
+// }
+
+
+.custom-card form{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
     gap: 1.5rem;
 }
 
@@ -23,27 +52,66 @@
     font-size: 0.65rem;
 }
 
-.card__field input{
+.card__field {
+    width: 200px;
+    max-width: 300px;
+    height: 50px;
+ 
+
+}
+
+.card__field input, .card__field select{
     width: 100%;
+    height: 100%;
+    border: 1px solid #e6e6e6;
+    border-radius: 0.25rem;
+    background-color: transparent;
+    color: #6c6c6c;
+    padding-left: 1rem;
+}
+
+
+.card__field--small{
+    width: 3rem;
+    height: 1.5rem;
+
+}
+
+.card__field--small input{
+    text-align: end;
+    background-color: transparent;
 }
 
 .card__field input:hover { 
     box-shadow: 0 0 0 3px #c8f3fa,0 2px 2px rgba(15,17,17,.15) inset;
 }
 
-.custom-card__body__actions input {
-    background-color: #FCD200;
-    border: 1px solid #e6c000;
-    width: 100%;
-    border-radius: 0.5rem;
+.custom-card__actions{
+    width: 100px;
+    height: 40px;
+
 }
 
-.custom-card__body__actions button{
-    background-color: #FCD200;
-    border: 1px solid #e6c000;
+
+
+.custom-card__actions input {
+    background-color: rgb(232, 17, 75);
+    border: none;
     width: 100%;
     border-radius: 0.5rem;
+    height: 100%;
+    color: white;
 }
+
+.custom-card__actions button{
+    background-color: rgb(232, 17, 75);
+    border: none;
+    width: 100%;
+    border-radius: 0.5rem;
+    height: 100%;
+    color: white;
+}
+
 
 
 body{
@@ -60,46 +128,9 @@ body main{
 }
 
 
-.custom-card-main{
-    margin-top: 2rem;
-}
-
-.custom-card-main__index{
-    margin-top: 2rem;
-    display: flex;
-    justify-content: space-between;
-}
 
 
 
-.custom-card-main__title a{
-    font-size: 2rem;
-    font-weight: 500;
-    text-decoration: none;
-    color: black;
-}
-
-.custom-card-main__stats{
-    display: flex;
-    gap: 1rem;
-    color: rgb(161, 161, 161);
-}
-
-.custom-main-cards-container{
- 
-    margin-top: 5rem;
-    border-top: 1px solid #e6e6e6;
-    border-bottom: 1px solid #e6e6e6;;
-
-}
-
-.custom-card-main__title--small a{
-    font-size: 1rem;
-    font-weight: 500;
-    text-decoration: none;
-    color: black;
-  
-}
 
 
 // DEVISE

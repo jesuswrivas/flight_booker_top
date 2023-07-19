@@ -7,7 +7,6 @@ class FlightsController < ApplicationController
             @countries = Country.all
             @booking = Booking.new
             @flight = Flight.new(flight_params)
-         
             @list_of_flights = Flight.flight_look_up(flight_params)
            
             render :index
@@ -15,7 +14,6 @@ class FlightsController < ApplicationController
             @flight = Flight.new
             @countries = Country.all
             @booking = Booking.new
-
             render :index
         end
                   
@@ -30,8 +28,11 @@ class FlightsController < ApplicationController
 
 
     def flight_params
+        if params[:flight]
             params.require(:flight).permit(:departure_id, :arrival_id, :date, :passengers)
-
+        else
+            nil
+        end
     end
 
 

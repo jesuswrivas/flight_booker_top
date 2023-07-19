@@ -1,0 +1,54 @@
+
+
+
+  
+<%= form_with model:@booking, url: "/bookings", method: "post" do |form|%>
+    <%= hidden_field :booking, :flight_id, :value => @flight.id %>
+    <h2>Flight information</h2>
+
+
+      <div class= "custom-card-main">
+
+            <div class="custom-card-main__title">
+            Flight from: <%= @flight.departure.code%> to:  <%= @flight.arrival.code%>
+            </div>
+
+            <div class="custom-card-main__stats">
+            <div class= "custom-card-main__stats__item">
+                Date: <%= @flight.date%>
+            </div>
+            <div class= "custom-card-main__stats__item">
+                Duration: <%= @flight.duration%>
+            </div>
+        </div>
+        
+    </div>
+
+
+    
+
+
+    <h2>Passengers information</h2>
+
+    <% @booking.passengers.each_with_index do |passenger,index|%>
+        <%= form.fields_for :passengers, passenger do |passenger_form| %>
+            <div class= "container mb-4">
+                <h5>Passenger <%= index + 1 %></h5>
+                <div>
+                    <%= passenger_form.label :name%>
+                    <%= passenger_form.text_field :name%>
+                </div>
+
+                <div>
+                    <%= passenger_form.label :email%>
+                    <%= passenger_form.text_field :email%>
+                </div>
+            </div>
+        
+        <% end %>
+    <%end%>
+    
+
+     <%= form.submit%>
+ <% end %>
+
