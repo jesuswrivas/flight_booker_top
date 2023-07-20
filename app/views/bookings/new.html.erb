@@ -2,53 +2,47 @@
 
 
   
-<%= form_with model:@booking, url: "/bookings", method: "post" do |form|%>
-    <%= hidden_field :booking, :flight_id, :value => @flight.id %>
-    <h2>Flight information</h2>
-
-
-      <div class= "custom-card-main">
-
-            <div class="custom-card-main__title">
-            Flight from: <%= @flight.departure.code%> to:  <%= @flight.arrival.code%>
-            </div>
-
-            <div class="custom-card-main__stats">
-            <div class= "custom-card-main__stats__item">
-                Date: <%= @flight.date%>
-            </div>
-            <div class= "custom-card-main__stats__item">
-                Duration: <%= @flight.duration%>
-            </div>
-        </div>
-        
-    </div>
-
-
+<div class="container mt-5">
+    <%= form_with model:@booking, url: "/bookings", method: "post" do |form|%>
+        <%= hidden_field :booking, :flight_id, :value => @flight.id %>
+        <h2>Flight information</h2>
     
-
-
-    <h2>Passengers information</h2>
-
-    <% @booking.passengers.each_with_index do |passenger,index|%>
-        <%= form.fields_for :passengers, passenger do |passenger_form| %>
-            <div class= "container mb-4">
-                <h5>Passenger <%= index + 1 %></h5>
-                <div>
-                    <%= passenger_form.label :name%>
-                    <%= passenger_form.text_field :name%>
-                </div>
-
-                <div>
-                    <%= passenger_form.label :email%>
-                    <%= passenger_form.text_field :email%>
-                </div>
-            </div>
-        
-        <% end %>
-    <%end%>
     
-
-     <%= form.submit%>
- <% end %>
-
+    
+        <%= render partial: "flights/flight-card", locals: { flight: @flight } %>
+    
+    
+        <h2>Passengers information</h2>
+    
+    
+        <% @booking.passengers.each_with_index do |passenger,index|%>
+    
+            <div class="custom-card-passenger">
+                <%= form.fields_for :passengers, passenger do |passenger_form| %>
+    
+                        <div class="custom-card-passenger__title">
+                            <h5>Passenger <%= index + 1 %></h5>
+                        </div>
+    
+                        <div class="custom-card-passenger__body">
+                            <div class="custom-card-passenger__body__field">
+                                <div class="custom-card-passenger__label"><%= passenger_form.label :name%></div>
+                                <div class="custom-card-passenger__field"><%= passenger_form.text_field :name%></div>
+                            </div>
+                            <div class="custom-card-passenger__body__field">
+                                <div class="custom-card-passenger__label"><%= passenger_form.label :email%></div>
+                                <div class="custom-card-passenger__field"><%= passenger_form.text_field :email%></div>
+                            </div>
+                        </div>
+    
+    
+                <% end %>
+            </div>
+    
+        <%end%>
+    
+         <div class="custom-card-passenger__action"><%= form.submit%></div>
+    
+     <% end %>
+    
+</div>

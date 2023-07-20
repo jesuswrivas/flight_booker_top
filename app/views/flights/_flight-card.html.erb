@@ -1,28 +1,31 @@
-<% list_of_flights.each do |flight|%>
-
-    <div class= "custom-card-main ">
-
-        <div>
-            <div class="custom-card-main__title">
-                Flight from: <%= flight.departure.code%> to:  <%= flight.arrival.code%>
+<div class="custom-card-flight mb-3">
+  
+  <div class="custom-card-flight__info">
+  
+        <div class="custom-card-flight__info__top">
+        
+            <div class="custom-card-flight__container">
+                <div class="custom-card-flight__hour">10:00</div>
+                <div class="custom-card-flight__code"><%= flight.departure.code %></div>
             </div>
-               <div class="custom-card-main__stats">
-                  <div class= "custom-card-main__stats__item">
-                   Duration: <%= flight.date%>
-                </div>
-                 <div class= "custom-card-main__stats__item">
-                   Duration: <%= flight.duration%>
-                </div>
             
+            <div class="custom-card-flight__container card-flight__container__vertical">
+                <div class="custom-card-flight__small-text">Duration</div>
+                <div><%= flight.duration %> hours</div>
             </div>
+            
+            <div class="custom-card-flight__container">
+                <div class="custom-card-flight__hour"><%= flight.destination_hour %></div>
+                <div class="custom-card-flight__code"><%= flight.arrival.code %></div>
+            </div>
+        
         </div>
-
-
-        <div>
         
-        
-        
+        <div class="custom-card-flight__info__bottom">
+            <div class="custom-card-flight__info__bottom__left">Direct Flight</div>
+            <div class="custom-card-flight__info__bottom__right custom-card-flight__small-text">Operated by LATAM</div>
         </div>
-
+    
+  </div>
+  
 </div>
-<% end %>
