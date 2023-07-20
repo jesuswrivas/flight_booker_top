@@ -3,12 +3,13 @@
 
 <h1>Search your next flight!</h1>
   
-  <div class="custom-card">
+  <div class="custom-card w-100 d-flex justify-content-center">
     <%= form_with model: @flight, url: "/flights", method: :get do |form| %>
+
       <div class="custom-card__body">
              <div class="custom-card__body__top">
               
-              <div class="card__field card__field--small"><%= form.number_field :passengers %></div>
+              <div class="card__field card__field--small"><%= form.number_field :passengers, min: 1, max:10, value:1 %></div>
               <div class="card__label"><label>Passengers</label></div>
             </div>
 
@@ -34,47 +35,70 @@
          
     <% end %>
   </div>
-</div>
 
 
 
 
 
-<% if @list_of_flights%>
-  <div>
 
-  <%= form_with model: @booking, url: "/bookings/new", method: :get  do |form| %>
-    <%= hidden_field :booking, :passengers, :value => @flight.passengers %>
+<% if @list_of_flights && @list_of_flights.count > 0%>
+          <div class = "w-100 d-flex justify-content-center mt-5">
+              <%= form_with model: @booking, url: "/bookings/new", method: :get, class:"w-100"  do |form| %>
+              
+                <%= hidden_field :booking, :passengers, :value => @flight.passengers %>
 
-    <% @list_of_flights.each do |flight|%>
+                    <% @list_of_flights.each do |flight|%>
 
-      <div class= "custom-card-main d-flex">
+                          <div class= "custom-card-flight mb-3">
+                                <div class="custom-card-flight__info">
+                                  
+                                        <div class = "custom-card-flight__info__top"> 
 
-        <div>
-            <div class="custom-card-main__title">
-              Flight from: <%= flight.departure.code%> to:  <%= flight.arrival.code%>
-            </div>
+                                          <div class="custom-card-flight__container">
+                                              <div class="custom-card-flight__hour">10:00</div>
+                                              <div class="custom-card-flight__code"><%= flight.departure.code%> </div>
+                                            </div>
 
-            <div class="custom-card-main__stats">
-              <div class= "custom-card-main__stats__item">
-                Duration: <%= flight.date%>
-              </div>
-              <div class= "custom-card-main__stats__item">
-                Duration: <%= flight.duration%>
-            </div>
+
+                                          <div class="custom-card-flight__container card-flight__container__vertical "> 
+                                            <div class="custom-card-flight__small-text">Duration</div>
+                                            <div>    <%= flight.duration%> hours     </div>
+                                          </div>
+
+
+                                           <div class="custom-card-flight__container">
+                                             <div class="custom-card-flight__hour"> <%= flight.destination_hour %>   </div>
+                                              <div class="custom-card-flight__code">  <%= flight.arrival.code%>      </div>
+                                           </div>
+
+                                        </div>
+                          
+                                        <div class = "custom-card-flight__info__bottom"> 
+                                          <div class = "custom-card-flight__info__bottom__left"> Direct Flight    </div>     
+                                          <div class = "custom-card-flight__info__bottom__right custom-card-flight__small-text"> Operated by LATAM    </div>  
+                                        
+                                        </div>
+                                </div>
+
+                                <div class="custom-card-flight__actions">   
+                                          <%= form.radio_button :flight_id, flight.id %>  
+                                          
+                                </div>
+
+                          </div>
+
+                    <% end %>
+
+                    <div class="custom-card__actions mt-5"><%= form.submit "Continue" %></div>
+              <% end %>
+
           </div>
 
-        </div>
-
-
-        <div>   <%= form.radio_button :flight_id, flight.id %>  </div>
-
+      <% else %>
+      <div class= "container mt-5 text-center">
+        <h5>Sorry no flights found</h5>
       </div>
-
-    <% end %>
-
-    <%= form.submit %>
-
-  <% end %>
-  </div>
 <% end %>
+
+
+</div>

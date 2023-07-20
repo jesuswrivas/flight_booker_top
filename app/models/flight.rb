@@ -10,7 +10,7 @@ class Flight < ApplicationRecord
     has_many :passengers, through: :bookings
 
 
-
+    validates :arrival_id, :departure_id, :duration, :date,  presence: true
 
 
 
@@ -24,10 +24,13 @@ class Flight < ApplicationRecord
     end
 
 
+    def destination_hour
+        departure_time = Time.new(2000, 1, 1, 10)
+        arrival_time = departure_time + self.duration.hours
+        arrival_time.strftime('%H:%M')
+    end
 
-
-
-
+  
 
 end
 
